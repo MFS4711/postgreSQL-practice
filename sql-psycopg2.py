@@ -26,7 +26,7 @@ cursor = connection.cursor()
 # cursor.execute('SELECT * FROM "Track" WHERE "Composer" = %s', ["Queen"])
 
 # Query 7 - select all tracks where the Composer is "Black Eyed Peas" from the "Track" table
-cursor.execute('SELECT * FROM "Track" WHERE "Composer" = %s', ["Metallica"])
+# cursor.execute('SELECT * FROM "Track" WHERE "Composer" = %s', ["Metallica"])
 
 # fetch the results (multiple)
 results = cursor.fetchall()
