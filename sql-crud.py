@@ -29,7 +29,7 @@ session = Session()
 base.metadata.create_all(db)
 
 
-# creating records on our programmer table
+# creating records on our programmer table - C
 ada_lovelace = Programmer(
     first_name = "Ada",
     last_name = "Lovelace",
@@ -86,19 +86,37 @@ dave_john = Programmer(
     famous_for = "Everything"
 )
 
-# add each instance of our programmers to our session - need to comment out previous sessions already run or a duplicate record with new id would be added
+# add each instance of our programmers to our session - need to comment out previous sessions already run or a duplicate record with new id would be added - C
 # session.add(ada_lovelace)
 # session.add(alan_turing)
 # session.add(grace_hopper)
 # session.add(margaret_hamilton)
 # session.add(bill_gates)
 # session.add(tim_berners_lee)
-session.add(dave_john)
+# session.add(dave_john)
 
-# commit our session to the database
-session.commit()
 
-# query the database to find all Programmers
+# updating a single record - search by primary key id as this unique - and.first() to avoid requiring a for loop - U
+# programmer = session.query(Programmer).filter_by(id=7).first()
+# # choose record to update in same way as searching but assigning the new value
+# programmer.famous_for = "World President"
+
+# commit our session to the database - do this after adding/updaing info to database - CRU
+# session.commit()
+
+# updating multiple records - U
+people = session.query(Programmer)
+for person in people:
+    if person.gender == "F":
+        person.gender = "Female"
+    elif person.gender == "M":
+        person.gender = "Male"
+    else:
+        print("Gender not defined")
+    # need to commit changes after each loop
+    session.commit()
+
+# query the database to find all Programmers - R
 programmers = session.query(Programmer)
 for programmer in programmers:
     print(
