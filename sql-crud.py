@@ -117,23 +117,29 @@ dave_john = Programmer(
 #     session.commit()
 
 
-# deleting a record - can do with primary key as a developer but better for a user with inputs - D
-fname = input("Enter a first name: ")
-lname = input("Enter a last name: ")
-programmer = session.query(Programmer).filter_by(first_name=fname, last_name=lname).first()
-# defensive programming - essentially safety checks
-if programmer is not None:
-    print("Programmer Found: ", programmer.first_name + " " + programmer.last_name)
-    confirmation = input("Are you sure you want to delete this record? (y/n) ")
-    if confirmation.lower() == "y":
-        session.delete(programmer)
-        session.commit()
-        print("Programmer has been deleted")
-    else:
-        print("Programmer not deleted")
-else:
-    print("No records found")
+# deleting a single record - can do with primary key as a developer but better for a user with inputs - D
+# fname = input("Enter a first name: ")
+# lname = input("Enter a last name: ")
+# programmer = session.query(Programmer).filter_by(first_name=fname, last_name=lname).first()
+# # defensive programming - essentially safety checks
+# if programmer is not None:
+#     print("Programmer Found: ", programmer.first_name + " " + programmer.last_name)
+#     confirmation = input("Are you sure you want to delete this record? (y/n) ")
+#     if confirmation.lower() == "y":
+#         session.delete(programmer)
+#         session.commit()
+#         print("Programmer has been deleted")
+#     else:
+#         print("Programmer not deleted")
+# else:
+#     print("No records found")
 
+
+# delete multiple records - all records would be deleted - should add defensive programming like above before deletion
+# programmer = session.query(Programmer)
+# for programmer in programmers:
+#     session.delete(programmer)
+#     session.commit()
 
 # query the database to find all Programmers - R
 programmers = session.query(Programmer)
